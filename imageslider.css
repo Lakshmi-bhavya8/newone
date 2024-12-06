@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.buttons{
+    width:300px;
+    height:300px;
+    position: relative;
+}
+.buttons img{
+    width:100%;
+    object-fit: cover;
+}
+.leftbutton{
+    position: absolute;
+    left: 0px;
+    top:50%;
+    z-index: 20;
+    height:50px;
+}
+.left-arrow{
+    color: white;
+}
+.rightbutton{
+    position: absolute;
+    right: 0px;
+    top:50%;
+    z-index: 20;
+    height: 50px;
+}
+.right-arrow{
+    color: white;
+}
+

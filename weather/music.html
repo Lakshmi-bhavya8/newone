@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Music app</h1>
+    <input type="text" id="music" placeholder="Enter song ">
+    <button id="fetchMusic">Get song</button>
+    <div id="MusicData"></div>
+<script>
+    const apikey="7f5194083bf24ab08b5555585376b180";
+    const apiUrl="https://api.discogs.com";
+    async function fetchMusic(music){
+    try{
+        const fullUrl = `${apiUrl}?key=${apikey}&q=${encodeURIComponent()}`;
+        const response=  await fetch(fullUrl);
+        if(!response.ok){
+        throw new Error(`Error:${response.status} ${response.statusText}`);
+        }
+        const data=await response.json();
+        console.log(data);
+        document.getElementById("fetchMusic").innerHTML=`
+        <h5>${data.music.releases}</h5>
+        <h5>${data.music.artists}</h5>
+        <h5>${data.music.labels}</h5>
+        
+        `;
+   }catch(error){
+    console.error("failed to fetch music data:",error);
+   }
+}
+document.getElementById('fetchMusic').addEventListener('click',()=>{
+    const city=document.getElementById('music').value;
+    fetchMusic(statistics);
+});
+
+</script>
+</body>
+</html>

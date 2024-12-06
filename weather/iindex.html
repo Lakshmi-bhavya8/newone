@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const apikey="900398b9547f4ed2a346ba1116ccd21f";
+        const apiUrl="https://api.discogs.com";
+async function fetchsong(statistics){
+  try{
+    const fullUrl = `${apiUrl}?key=${apikey}&q=${encodeURIComponent(statistics)}`;
+    const response=await fetch(fullUrl);
+    if(!response.ok){
+      throw new Error(`Error:${response.status} ${response.statusText}`);
+    }
+    const data=await response.json();
+    console.log("musicdata:",data);
+    return data;
+  }catch(error){
+    console.log( "failed to fetch music data:",error);
+  }
+}
+
+fetchsong("song");
+    </script>
+</body>
+</html>
